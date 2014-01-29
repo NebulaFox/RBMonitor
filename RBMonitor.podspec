@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "RBMonitor"
-  s.version      = "1.0.0"
+  s.version      = "1.0.1"
   s.summary      = "A synchronization construct with the ability to wait until signalled that a condition has been met."
 
   s.description  = <<-DESC
@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
   # Could work on iOS 6, but haven't tested
   s.platform     = :ios, '7.0'
 
-  s.source       = { :git => "https://github.com/NebulaFox/RBMonitor.git", :tag => "1.0.0" }
+  s.source       = { :git => "https://github.com/NebulaFox/RBMonitor.git", :tag => "1.0.1" }
 
   s.source_files  = 'RBMonitor', 'RBMonitor/**/*.{h,m}'
 

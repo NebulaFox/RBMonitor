@@ -11,7 +11,7 @@
 
 @property ( nonatomic, copy ) NSSet * identifiers;
 @property ( nonatomic, strong ) NSMutableArray * mutReceivedIdentifiers;
-@property ( nonatomic, strong ) NSMutableArray * mutWaitingOnIdentifiers;
+@property ( nonatomic, strong ) NSMutableSet * mutWaitingOnIdentifiers;
 
 @end
 
@@ -30,16 +30,16 @@
         NSMutableSet * newIdentifiers = [NSMutableSet new];
         for ( id identifier in identifers )
         {
-            if ( [obj conformsToProtocol:@protocol(NSObject)])
+            if ( [identifier conformsToProtocol:@protocol(NSObject)])
             {
-                [newIdentifiers addObject:obj];
+                [newIdentifiers addObject:identifier];
             }
         }
         
         self.identifiers = [newIdentifiers copy];
         
         self.mutReceivedIdentifiers = [NSMutableArray new];
-        self.mutWaitingOnIdentifiers = [NSMutableArray arrayWithArray:identifers];
+        self.mutWaitingOnIdentifiers = newIdentifiers;
     }
     return self;
 }
@@ -113,7 +113,7 @@
 
 - (NSSet *)waitingOnIdentifiers
 {
-    return [NSSet setWithArray:self.mutWaitingOnIdentifiers];
+    return [self.mutWaitingOnIdentifiers copy];
 }
 
 @end
